@@ -1,0 +1,16 @@
+{
+    "name": "cawa/CUser",
+    "description": "Simple user module for ZF2",
+    "license": "GNU",
+    "keywords": [
+        "user",
+        "zf2"
+    ],
+    "homepage": "http://framework.zend.com/",
+    "require": {
+        "php": ">=5.3.3",
+        "zendframework/zendframework": "2.*@dev",
+        "doctrine/doctrine-orm-module": "0.*",
+        "zendframework/zftool": "dev-master"
+    }
+}

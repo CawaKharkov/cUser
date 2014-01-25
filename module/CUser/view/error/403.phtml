@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="row">
+        
+        <div class="alert alert-block alert-info">
+            <h1 class="alert-heading">У вас не достаточно прав для просмотра данной страницы</h1>
+            <p>
+                <a class="btn btn-info" href="<?php echo $this->url('home', ['controller' => 'user','action'=>'login']); ?>">Войти</a> 
+                <a class="btn btn-success" href="<?php echo $this->url('home', ['controller' => 'user','action'=>'register']); ?>">Зарегестрироватся</a>
+            </p>
+        </div>
+    </div>
+</div>
+
