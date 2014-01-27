@@ -4,6 +4,7 @@ namespace CUser\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Zend\Form\Annotation;
+use CUser\User\UserInterface;
 
 /**
  * Description of User
@@ -19,7 +20,7 @@ use Zend\Form\Annotation;
  * @ORM\Table(name="user", options={"collate"="utf8_general_ci"})
  * @ORM\Entity(repositoryClass="\CUser\Repository\UserRepository")
  */
-class User
+class User implements UserInterface
 {
 
     /**
@@ -32,15 +33,12 @@ class User
 
     /**
      * @ORM\Column(type="string", name="username",length=25)
-     * @Annotation\Type("Zend\Form\Element\Text")
-     * @Annotation\Required(false)
-     * @Annotation\Attributes({"class":"form-element"})
      * @var string
      */
     protected $username;
 
     /**
-     * @ORM\Column(type="string", name="email",length=25)
+     * @ORM\Column(type="string", name="email",length=25, unique=true)
      * @var stirng
      */
     protected $email;
@@ -89,6 +87,28 @@ class User
     public function setPassword($password)
     {
         $this->password = $password;
+    }
+
+    public function __construct($params = null)
+    {
+        //Populate
+        if (is_array($params))
+            $this->fromArray($params);
+        if (is_string($params))
+            $this->fromJson($params);
+    }
+
+    public function fromArray(array $data = array())
+    {
+        foreach ($data as $property => $value) {
+
+            $setter = 'set' . ucfirst($property);
+            if (method_exists($this, $setter))
+                $this->$setter($value);
+            elseif (property_exists($this, $property))
+                $this->$property = $value;
+        }
+        return $this;
     }
 
 }

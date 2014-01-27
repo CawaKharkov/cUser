@@ -27,7 +27,7 @@ return array(
             'Zend\Log\LoggerAbstractServiceFactory',
         ),
         'factories' => [
-            // service factory
+        // service factory
         ],
         'invokables' => [
             'RegistrationService' => 'CUser\Service\RegistrationService',
@@ -66,6 +66,12 @@ return array(
             __DIR__ . '/../view',
         ),
     ),
+    'view_helpers' => [
+        'invokables' =>
+        [
+            'viewForm' => 'CUser\View\Helper\FormHelper'
+        ]
+    ],
     // Placeholder for console routes
     'console' => array(
         'router' => array(

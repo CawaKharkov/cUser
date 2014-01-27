@@ -1,0 +1,27 @@
+<?php echo $this->headTitle('Register')->setSeparator(' - ')->setAutoEscape(false) ?>
+<div class="container" id="login">
+    <div class="row vertical-offset-100">
+        <div class="col-md-4 col-md-offset-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Create a new account</h3>
+                </div>
+                <div class="panel-body">
+                    <?php
+                    $form = $this->registrationForm;
+                    $form->setAttribute('action', $this->url(
+                                    'cUser', array(
+                                'action' => 'register',
+                                    )
+                    ));
+                    $form->prepare();
+
+                    echo $this->form()->openTag($form);
+                    echo $this->formCollection($form);
+                    echo $this->form()->closeTag();
+                    ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
